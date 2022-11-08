@@ -113,6 +113,16 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -145,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/07/solitity/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/07/solidity/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -159,7 +169,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/11/07/solitity/" class="post-title-link" itemprop="url">solitity</a>
+            <a href="/2022/11/07/solidity/" class="post-title-link" itemprop="url">solidity</a>
         </h2>
 
         <div class="post-meta">
@@ -168,10 +178,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-07 22:40:53 / 修改时间：22:42:00" itemprop="dateCreated datePublished" datetime="2022-11-07T22:40:53+08:00">2022-11-07</time>
+              <time title="创建时间：2022-11-07 22:40:53" itemprop="dateCreated datePublished" datetime="2022-11-07T22:40:53+08:00">2022-11-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-08 22:45:30" itemprop="dateModified" datetime="2022-11-08T22:45:30+08:00">2022-11-08</time>
+              </span>
 
           
 
@@ -184,43 +200,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Solidity"><a href="#Solidity" class="headerlink" title="Solidity"></a>Solidity</h1><p>​	中文参考文档: <a target="_blank" rel="noopener" href="https://learnblockchain.cn/docs/solidity">https://learnblockchain.cn/docs/solidity</a></p>
-<p>​	编译器地址：<a target="_blank" rel="noopener" href="https://remix.ethereum.org/">https://remix.ethereum.org/</a></p>
-<h1 id="HelloWorld程序"><a href="#HelloWorld程序" class="headerlink" title="HelloWorld程序"></a>HelloWorld程序</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract HelloWorld&#123;</span><br><span class="line">    string Myname=&quot;HelloWorld&quot;;</span><br><span class="line">    function getName() public view returns(string memory)&#123;</span><br><span class="line">        </span><br><span class="line">        return Myname;</span><br><span class="line">    &#125;</span><br><span class="line">    function changeName(string memory NewName) public&#123;</span><br><span class="line">        Myname=NewName;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="动态字节数组"><a href="#动态字节数组" class="headerlink" title="动态字节数组"></a>动态字节数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract DynamicBytes&#123;</span><br><span class="line"></span><br><span class="line">    bytes public name= new bytes(2);//状态变量标记 public 的数组，Solidity创建一个 getter函数 。</span><br><span class="line">    function InitName() public &#123;</span><br><span class="line">        name[0]=0x7a;</span><br><span class="line">        name[1]=0x68;</span><br><span class="line">    &#125;</span><br><span class="line">    function GetLength() public view returns(uint )&#123;</span><br><span class="line">        return name.length;</span><br><span class="line">    &#125;</span><br><span class="line">    function PushTest() public &#123;</span><br><span class="line">        name.push(0x99);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="固定长度字节数组转化为动态字节数组"><a href="#固定长度字节数组转化为动态字节数组" class="headerlink" title="固定长度字节数组转化为动态字节数组"></a>固定长度字节数组转化为动态字节数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract fixToDynamic&#123;</span><br><span class="line">    bytes16 name=hex&quot;736f6c6974697479&quot;;//学solitity真tmcool(8个字节)</span><br><span class="line">    function fixBytesToDynamicBytes() public view returns(bytes memory )&#123;</span><br><span class="line">        bytes memory NewName=new bytes(name.length);</span><br><span class="line">        for(uint i=0;i&lt;name.length;i++)&#123;</span><br><span class="line">            NewName[i]=name[i];</span><br><span class="line">        &#125;</span><br><span class="line">        return NewName;//会已0填充剩下的数组空间</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="固定字节长度Bytes与String转化"><a href="#固定字节长度Bytes与String转化" class="headerlink" title="固定字节长度Bytes与String转化"></a>固定字节长度Bytes与String转化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract BytesToString&#123;</span><br><span class="line">    bytes name=hex&quot;736f6c6974697479&quot;;</span><br><span class="line">    function ToString() public view returns(string memory )&#123;</span><br><span class="line">        bytes memory NewName=new bytes(name.length);</span><br><span class="line">        for(uint i=0;i&lt;name.length;i++)&#123;</span><br><span class="line">            NewName[i]=name[i];</span><br><span class="line">        &#125;</span><br><span class="line">        return  string(NewName);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="动态字节数组转化为String"><a href="#动态字节数组转化为String" class="headerlink" title="动态字节数组转化为String"></a>动态字节数组转化为String</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract ToString&#123;</span><br><span class="line">    bytes name=new bytes(2);</span><br><span class="line">    function init() public &#123;</span><br><span class="line">        name[0]=hex&quot;6c&quot;;</span><br><span class="line">        name[1]=hex&quot;71&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    function BytesToString() public view returns(string memory)&#123;</span><br><span class="line">        return string(name);//直接强转就可</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="静态二维数组"><a href="#静态二维数组" class="headerlink" title="静态二维数组"></a>静态二维数组</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract TArray&#123;</span><br><span class="line">        uint [2][3] public grade = [[60,80],[40,20],[50,50]];//3行2列的数据</span><br><span class="line">    function GetRows() view public returns(uint)&#123;</span><br><span class="line">        return grade.length;//返回行数：3</span><br><span class="line">    &#125;</span><br><span class="line">    function GetCols() view public returns(uint)&#123;</span><br><span class="line">        return grade[0].length;//返回列数：2</span><br><span class="line">    &#125;</span><br><span class="line">    function Sum() view public returns(uint)&#123;</span><br><span class="line">        uint sum=0;</span><br><span class="line">        for(uint i=0;i&lt;grade.length;i++)</span><br><span class="line">            for(uint j=0;j&lt;grade[0].length;j++)&#123;</span><br><span class="line">                sum+=grade[i][j];//遍历又是从行数到列数</span><br><span class="line">            &#125;</span><br><span class="line">        return sum;    </span><br><span class="line">    &#125;</span><br><span class="line">    function change()  public &#123;</span><br><span class="line">        grade[1][1]=100;//修改也是从行数到列数[1][3]：第一行第三个元素50</span><br><span class="line">    &#125;</span><br><span class="line">    function GetArray() view public returns(uint[2][3] memory)&#123;</span><br><span class="line">        return grade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract ArrayConst&#123;</span><br><span class="line">    // function GetArray() public view returns(uint[3] memory)&#123;//uint默认256位</span><br><span class="line">    //     return [1,2,3];//最小匹配原则:1，2，3，能容纳他们的最少需要8位,与返回值类型不同会报错</span><br><span class="line">    // &#125;</span><br><span class="line">    function GetArray1() public view returns(uint[3] memory)&#123;//uint默认256位</span><br><span class="line">        return [uint(1),2,3];//直接强转，将数组类型与返回类型转为相同,只需强转第一个元素，后面的元素也会自动转化</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	数组定义是行数与列数相反，操作时又和C语言二维数组相同。动态二维数组定义和一维数组相同。</p>
-<h1 id="转账交易"><a href="#转账交易" class="headerlink" title="转账交易"></a>转账交易</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract Address&#123;</span><br><span class="line">    function pay() public payable &#123;//给合约转账</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    function Getbalance() public returns(uint)&#123;</span><br><span class="line">        return address(this).balance;//获取合约账户的余额</span><br><span class="line">    &#125;</span><br><span class="line">    function Transfer() public payable returns(uint)&#123;//给用户转账</span><br><span class="line">        address payable count=0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;//用户地址</span><br><span class="line">        count.transfer(msg.value);</span><br><span class="line">        return count.balance;//获取用户账户的余额</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><ul>
-<li><code>blockhash(uint blockNumber) returns (bytes32)</code>：指定区块的区块哈希 —— 仅可用于最新的 256 个区块且不包括当前区块，否则返回 0 。</li>
-<li><code>block.basefee</code> (<code>uint</code>): 当前区块的基础费用，参考： (<a target="_blank" rel="noopener" href="https://eips.ethereum.org/EIPS/eip-3198">EIP-3198</a> 和 <a target="_blank" rel="noopener" href="https://eips.ethereum.org/EIPS/eip-1559">EIP-1559</a>)</li>
-<li><code>block.chainid</code> (<code>uint</code>): 当前链 id</li>
-<li><code>block.coinbase</code> ( <code>address</code> ): 挖出当前区块的矿工地址</li>
-<li><code>block.difficulty</code> ( <code>uint</code> ): 当前区块难度</li>
-<li><code>block.gaslimit</code> ( <code>uint</code> ): 当前区块 gas 限额</li>
-<li><code>block.number</code> ( <code>uint</code> ): 当前区块号</li>
-<li><code>block.timestamp</code> ( <code>uint</code>): 自 unix epoch 起始当前区块以秒计的时间戳</li>
-<li><code>gasleft() returns (uint256)</code> ：剩余的 gas</li>
-<li><code>msg.data</code> ( <code>bytes</code> ): 完整的 calldata</li>
-<li><code>msg.sender</code> ( <code>address</code> ): 消息发送者（当前调用）</li>
-<li><code>msg.sig</code> ( <code>bytes4</code> ): calldata 的前 4 字节（也就是函数标识符）</li>
-<li><code>msg.value</code> ( <code>uint</code> ): 随消息发送的 wei 的数量</li>
-<li><code>tx.gasprice</code> (<code>uint</code>): 交易的 gas 价格</li>
-<li><code>tx.origin</code> ( <code>address</code> ): 交易发起者（完全的调用链）</li>
-</ul>
-<h2 id="映射-x2F-字典（mapping）"><a href="#映射-x2F-字典（mapping）" class="headerlink" title="映射&#x2F;字典（mapping）"></a>映射&#x2F;字典（mapping）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.5.2;</span><br><span class="line">contract Mapping&#123;</span><br><span class="line">    //定义</span><br><span class="line">    mapping(address=&gt;uint) IdMapping;</span><br><span class="line">    mapping(uint=&gt;string) NameMapping;//string与uint绑定为什么要加memory？</span><br><span class="line">    uint public ID=0;</span><br><span class="line">    //绑定</span><br><span class="line">    function Register(string memory Name) public&#123;</span><br><span class="line">        address account=msg.sender;</span><br><span class="line">        ID++;</span><br><span class="line">        IdMapping[account]=ID;</span><br><span class="line">        NameMapping[ID]=Name;</span><br><span class="line">    &#125;</span><br><span class="line">    function GetId(address Address) view public returns(uint)&#123;</span><br><span class="line">        return IdMapping[Address];</span><br><span class="line">    &#125;</span><br><span class="line">    function GetName(uint id) view public returns(string memory)&#123;</span><br><span class="line">        return NameMapping[id];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+          美，只不过是一瞬间的感觉，只有真实才是永恒的，而真实绝不会美
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/07/solidity/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -262,10 +250,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-11-07 22:35:42 / 修改时间：22:37:27" itemprop="dateCreated datePublished" datetime="2022-11-07T22:35:42+08:00">2022-11-07</time>
+              <time title="创建时间：2022-11-07 22:35:42" itemprop="dateCreated datePublished" datetime="2022-11-07T22:35:42+08:00">2022-11-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-08 20:28:39" itemprop="dateModified" datetime="2022-11-08T20:28:39+08:00">2022-11-08</time>
+              </span>
 
           
 
@@ -278,8 +272,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>比特币白皮书:<br><a target="_blank" rel="noopener" href="https://bitcoin.org/files/bitcoin-paper/bitcoin_zh_cn.pdf">https://bitcoin.org/files/bitcoin-paper/bitcoin_zh_cn.pdf</a><br>比特币简单介绍:<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=obRzfcvMshM&amp;t=207s">https://www.youtube.com/watch?v=obRzfcvMshM&amp;t=207s</a></p>
-
+          树叶的一生只是为了归根吗
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/07/%E5%8C%BA%E5%9D%97%E9%93%BE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -394,8 +395,10 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Apink</span>
 </div>
+<!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
+-->
 
         
 
